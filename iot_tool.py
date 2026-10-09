@@ -51,7 +51,41 @@ def calculate_variant_6():
     print("\n[Variant 6: Digital Communication Protocols]")
     # DEVELOPER 6: Read I2C bus frequency in kHz (F). Period T = 1000000 / (F * 1000).
     # Perform bitwise AND between frequency and 0x0F. USART_BAUDRATE string, rx buffer.
-    pass
+    #1.1
+    F = float(input('введіть частоту шини І2С в кГц:  '))
+    F_2 = F * 1000 #переводимо в Гц
+    T = 10 ** 6 / F_2 # Обчислюємо період за формулою з умови
+    result = int(F_2) & 0x0F # Виконуємо побітове AND
+    print(f'Результат операції AND:{result}')
+    print(f'Період:{T}') #Виводимо результати користувачеві
+
+
+    #1.2
+    name = input('Введіть назву інтерфейсу, наприклад "USART_BAUDRATE_115200":')
+    length = len(name) #Рахуємо кількість знаків в назві
+    end_1 = name.endswith('115200') #
+    a = name[:5] # Беремо з першого по 5 елемент
+    print(f"\nЧи закінчується на '115200': {end_1}")
+    print(f'Кількість символів у назві інтерфейсу: {length}')
+    print(f'Перші 5 символів назви:{a}') #Друкуємо результати
+
+
+    #1.3
+    my_list = [0xAA, 0x01, 0x02, 0xFF]
+    my_list[1] = 0x03 #Замінюємо другий (0х01) елемент
+    my_list.append(0x00) #Додаємо стоповий байт
+    UART = 'baudrate', 'databits', 'parity', 'stopbits', #Створюємо кортеж
+    print(f'\nЗмінений список:{my_list}')
+    print(f'Кортеж:{UART}') # Друкуємо результати
+
+
+    #1.4
+    D = { 'device_address': 'xxx' ,'protocol': 'UART', 'supported_rates': [111200, 115200, 9600, 115200]}
+    a = set(D['supported_rates']) #Створюємо множину значень ключа "supported_rates"
+    check_1 = (115200 in a) and (D["protocol"] == "UART") #Перевіряємо умову із завдання
+    print(f"\nМножина унікальних швидкостей: {a}") #
+    print(f'Результат перевірки умови: "чи присутня швидкість 115200 у множині та чи "UART" є протоколом" : {check_1}') #Друкуємо результат
+
 
 
 def calculate_variant_7():
