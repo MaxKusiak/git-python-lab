@@ -41,7 +41,7 @@ def calculate_variant_2():
 
     ads = int(input("Введість 10-бітне значення ADC: "))
     vref = 5
-    v = (ads/1023)* vref 
+    v = int((ads/1023)* vref )
     pr = ads << 2
     print("Напруга: ", bin(v))
     print("Значення АЦП з побітовим зсувом у двійковому форматі: ", bin(pr))
