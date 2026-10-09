@@ -29,7 +29,9 @@ def calculate_variant_2_2():
     V2=(ADC/1023)*Vref #calculation of V based on Vref
     print("ADC<<2=",ADC<<2) #Output of ADC with double bitwise left shift in decimal system
     print("V=", V2) #Output of V
-    print("ADC<<2=", bin(ADC<<2), sep="") #Output of ADC with double bitwise left shift in binary system
+    print("ADC<<2=", bin(ADC<<2), sep="") 
+    print(bin(ADC))
+    #Output of ADC with double bitwise left shift in binary system
     # DEVELOPER 2: Read 10-bit ADC and Vref = 5.0. Calculate V = (ADC / 1023) * Vref.
     # Apply bitwise left shift ADC << 2. Validate sensor marking, list of voltages.
     pass
