@@ -21,8 +21,50 @@ def calculate_variant_1():
 
 def calculate_variant_2():
     print("\n[Variant 2: Analog-to-Digital Conversion]")
-    # DEVELOPER 2: Read 10-bit ADC and Vref = 5.0. Calculate V = (ADC / 1023) * Vref.
-    # Apply bitwise left shift ADC << 2. Validate sensor marking, list of voltages.
+    print("Пункт 1.1")
+
+    ads = int(input("Введість 10-бітне значення ADC: "))
+    vref = 5
+    v = (ads/1023)* vref 
+    pr = ads << 2
+    print("Напруга: ", v)
+    print("Значення АЦП з побітовим зсувом у двійковому форматі: ", bin(pr))
+
+    print("Пункт 1.2")
+
+    mark = input("Введіть маркування аналогового датчика: ")
+    start = mark.startswith("SENSOR")
+    print("Маркування починається з SENSOR:",start)
+    print("Довжина рядка маркування:", len(mark))
+    print("Перші 6 символів маркування:", mark[:6])
+
+    print("Пункт 1.3")
+
+    vol = [1, 2, 3, 4, 5]
+    new =float(input("Введіть нове значення: "))
+    vol[0] = new
+    vol.pop()
+    print("Новий список напруг: ", vol)
+    bs = (10, 20)
+    print("Парамерти системи (незмінні роздільна здатність та частота): ", bs)
+
+    print("Пункт 1.4")
+
+    pin = int(input("Введіть пін: "))
+    voltage = float(input("Введіть напругу: "))
+
+    spisok = {
+        "pin": pin,
+        "voltage": voltage,
+        "status_flags": ["OK", "OVERHEAT","OK"]
+    }
+    print(spisok)
+
+    un = set(spisok["status_flags"])
+    print("Множина унікальних прапорів: ", un)
+
+    ch = ("CRITICAL" not in un) and (spisok["voltage"] < 4.5)
+    print("Наявність CRITICAL та напруги менше за 4.5", ch)
     pass
 
 
