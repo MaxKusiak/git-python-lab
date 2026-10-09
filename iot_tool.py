@@ -35,17 +35,17 @@ def calculate_variant_3():
 
 def calculate_variant_4():
     # № 1
-        # Input of the force and area
-        print("Введіть прикладену силу(Н): ")
-        F = int(input())
-        print("Введіть площу(мм^2): ")
-        A = int(input())
-        # Calculation of mechanical stress and binary shift for the force
-        stress = F / A
-        shift = bin(F >> 1)
-        # Output of results
-        print("Механічна напруга: ", stress, "МПа")
-        print("Побітовий зсув: ", shift)
+    # Input of the force and area
+    print("Введіть прикладену силу(Н): ")
+    F = int(input())
+    print("Введіть площу(мм^2): ")
+    A = int(input())
+    # Calculation of mechanical stress and binary shift for the force
+    stress = F / A
+    shift = bin(F >> 1)
+    # Output of results
+    print("Механічна напруга: ", stress, "МПа")
+    print("Побітовий зсув: ", shift)
     print("\n[Variant 4: Stress and Strain Calculation]")
     # DEVELOPER 4: Read force F and area A. Mechanical stress sigma = F / A.
     # Apply bitwise right shift F >> 1. Material grade string and component strains.
