@@ -43,7 +43,7 @@ def calculate_variant_2():
     vref = 5
     v = (ads/1023)* vref 
     pr = ads << 2
-    print("Напруга: ", v)
+    print("Напруга: ", bin(v))
     print("Значення АЦП з побітовим зсувом у двійковому форматі: ", bin(pr))
 
     print("Пункт 1.2")
