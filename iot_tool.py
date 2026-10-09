@@ -35,6 +35,55 @@ def calculate_variant_2_2():
     pass
 
 
+
+def calculate_variant_2():
+    print("Пункт 1.1")
+
+    ads = int(input("Введість 10-бітне значення ADC: "))
+    vref = 5
+    v = (ads/1023)* vref 
+    pr = ads << 2
+    print("Напруга: ", v)
+    print("Значення АЦП з побітовим зсувом у двійковому форматі: ", bin(pr))
+
+    print("Пункт 1.2")
+
+    mark = input("Введіть маркування аналогового датчика: ")
+    start = mark.startswith("SENSOR")
+    print("Маркування починається з SENSOR:",start)
+    print("Довжина рядка маркування:", len(mark))
+    print("Перші 6 символів маркування:", mark[:6])
+
+    print("Пункт 1.3")
+
+    vol = [1, 2, 3, 4, 5]
+    new =float(input("Введіть нове значення: "))
+    vol[0] = new
+    vol.pop()
+    print("Новий список напруг: ", vol)
+    bs = (10, 20)
+    print("Парамерти системи (незмінні роздільна здатність та частота): ", bs)
+
+    print("Пункт 1.4")
+
+    pin = int(input("Введіть пін: "))
+    voltage = float(input("Введіть напругу: "))
+
+    spisok = {
+        "pin": pin,
+        "voltage": voltage,
+        "status_flags": ["OK", "OVERHEAT","OK"]
+    }
+    print(spisok)
+
+    un = set(spisok["status_flags"])
+    print("Множина унікальних прапорів: ", un)
+
+    ch = ("CRITICAL" not in un) and (spisok["voltage"] < 4.5)
+    print("Наявність CRITICAL та напруги менше за 4.5", ch)
+    pass
+
+
 def calculate_variant_3():
     print("\n[Variant 3: Battery Pack Monitoring]")
     # DEVELOPER 3: Read capacity E and power P. Calculate t = E / P.
@@ -60,7 +109,41 @@ def calculate_variant_6():
     print("\n[Variant 6: Digital Communication Protocols]")
     # DEVELOPER 6: Read I2C bus frequency in kHz (F). Period T = 1000000 / (F * 1000).
     # Perform bitwise AND between frequency and 0x0F. USART_BAUDRATE string, rx buffer.
-    pass
+    #1.1
+    F = float(input('введіть частоту шини І2С в кГц:  '))
+    F_2 = F * 1000 #переводимо в Гц
+    T = 10 ** 6 / F_2 # Обчислюємо період за формулою з умови
+    result = int(F_2) & 0x0F # Виконуємо побітове AND
+    print(f'Результат операції AND:{result}')
+    print(f'Період:{T}') #Виводимо результати користувачеві
+
+
+    #1.2
+    name = input('Введіть назву інтерфейсу, наприклад "USART_BAUDRATE_115200":')
+    length = len(name) #Рахуємо кількість знаків в назві
+    end_1 = name.endswith('115200') #
+    a = name[:5] # Беремо з першого по 5 елемент
+    print(f"\nЧи закінчується на '115200': {end_1}")
+    print(f'Кількість символів у назві інтерфейсу: {length}')
+    print(f'Перші 5 символів назви:{a}') #Друкуємо результати
+
+
+    #1.3
+    my_list = [0xAA, 0x01, 0x02, 0xFF]
+    my_list[1] = 0x03 #Замінюємо другий (0х01) елемент
+    my_list.append(0x00) #Додаємо стоповий байт
+    UART = 'baudrate', 'databits', 'parity', 'stopbits', #Створюємо кортеж
+    print(f'\nЗмінений список:{my_list}')
+    print(f'Кортеж:{UART}') # Друкуємо результати
+
+
+    #1.4
+    D = { 'device_address': 'xxx' ,'protocol': 'UART', 'supported_rates': [111200, 115200, 9600, 115200]}
+    a = set(D['supported_rates']) #Створюємо множину значень ключа "supported_rates"
+    check_1 = (115200 in a) and (D["protocol"] == "UART") #Перевіряємо умову із завдання
+    print(f"\nМножина унікальних швидкостей: {a}") #
+    print(f'Результат перевірки умови: "чи присутня швидкість 115200 у множині та чи "UART" є протоколом" : {check_1}') #Друкуємо результат
+
 
 
 def calculate_variant_7():
