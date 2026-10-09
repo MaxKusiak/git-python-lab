@@ -19,8 +19,17 @@ def calculate_variant_1():
     pass
 
 
-def calculate_variant_2():
+def calculate_variant_2_2():
     print("\n[Variant 2: Analog-to-Digital Conversion]")
+    #Analogous-digital transformation 1.1
+    print("Enter ADC value in formal like 0bxxxxxxxxxx (10 bit)" \
+          "\nor basic integer number in decimal system")
+    ADC=int(input("ADC="),0) #value input
+    Vref=5 #reference voltage
+    V2=(ADC/1023)*Vref #calculation of V based on Vref
+    print("ADC<<2=",ADC<<2) #Output of ADC with double bitwise left shift in decimal system
+    print("V=", V2) #Output of V
+    print("ADC<<2=", bin(ADC<<2), sep="") #Output of ADC with double bitwise left shift in binary system
     # DEVELOPER 2: Read 10-bit ADC and Vref = 5.0. Calculate V = (ADC / 1023) * Vref.
     # Apply bitwise left shift ADC << 2. Validate sensor marking, list of voltages.
     pass
