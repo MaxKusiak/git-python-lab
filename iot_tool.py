@@ -113,10 +113,45 @@ def calculate_variant_4():
 
 
 def calculate_variant_5():
-    print("\n[Variant 5: Unmanned Aerial Vehicle Telemetry]")
-    # DEVELOPER 5: Read altitude H and vertical speed Vz. Calculate t = H / Vz.
-    # Perform bitwise XOR between H and Vz. Validate $GPGGA telemetry string, active sensors.
-    pass
+ print("\n[Variant 5: Unmanned Aerial Vehicle Telemetry]")
+ # DEVELOPER 5: Read altitude H and vertical speed Vz. Calculate t = H / Vz.
+ # Perform bitwise XOR between H and Vz. Validate $GPGGA telemetry string, active sensors.
+ #1
+ H=int(input('Введіть висоту дрона(у м): '))
+ Vz=int(input('Введіть вертикальну швидкість дрона(у м/с): '))
+ t=H/Vz
+ print('Час спуску дрона: ', t)
+ print("Результат операції 'виключне АБО': ", H^Vz)  
+ 
+ #2
+ paket=input('Введіть пакет даних: ')
+ print('Так. Рядок починається на $GPGGA') if paket[:6]=='$GPGGA' else print('Ні. Рядок починається інакше')
+ print('Останні 6 елементів рядка', paket[-6:])
+ l=len(paket)
+ print("Довжина рядка: ", l)
+ 
+ #3
+ h_list=list(input('Введіть набір висот дрона через пробіл: ').split())
+ h_list[1]=input('Введіть на що Ви хочете замінити другий елемент списку: ')
+ h_list.extend(input('Введіть який Ви хочете додати останній елемент списку: '))
+ print('Оновлений список висот: ',h_list)
+ 
+ lat=float(input('Введіть широту дрона: '))
+ lon=float(input('Введіть довготу дрона: '))
+ alt=H   #alt--це висота дрона
+ GPS=(lat,lon,alt)
+ print('Кортеж координат дрона: ', GPS) 
+
+ #4
+ drone_id=input('Введіть drone_id: ')
+ flight_mode=input('Введіть flight_mode: ')
+ active_sensors=list(input('Введіть active_sensors: ').split())
+ data_drone=dict(drone_id=drone_id, flight_mode=flight_mode, active_sensors=active_sensors)
+ print('Словник даних про дрон', data_drone)
+ sensors=set(active_sensors)
+ print('множина датчиків дрона: ',sensors)
+ print('У дрона є сенсор IMU') if (H>10 and ('IMU' in sensors)) else print('У дрона нема сенсора IMU')
+ pass
 
 
 def calculate_variant_6():
